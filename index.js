@@ -3,11 +3,11 @@ const tracery = require("tracery-grammar");
 const json = {
     // DEFINES VARIABLES
     "origin": ["#[location:#name#][terrain:#geography#][native:#animal#]story#"],
-    // Entry point
-    "story": ["#location# by #terrain# with native #native.s# and a wealth of #resource#. Centered in #location# is a #size# #construction#. #location# is governed by #government.a# and is known for #culture#"],
-    // BRANCHES: use 
-    "name": ["#settlement_name#", "#dated# #city_name#", "#empire_name#"],
-    "construction": ["#state# #defense_structure# surrounded by a #surroundable_defense#",],
+    "story": ["#location# #describe_empire# by #terrain# with native #native.s# and a wealth of #resource#. Centered in #location# is a #size# #construction#. #location# is governed by #government.a# and is known for #culture#"],
+    // BRANCHES: use variables
+    "describe_empire": ["of the #empire_name# #empire_type#"],
+    "name": ["#settlement_name#", "#dated# #city_name#"],
+    "construction": ["#state# #defense_structure# #surrounded_syn# by #surroundable_defense#",],
     // LEAVES: use no variables
     "animal": ["raven", "sparrow", "scorpion", "coyote", "eagle", "owl", "lizard", "zebra", "duck", "kitten"],
     "geography": ["coastal harbor", "calm, coastal bay", "large freshwater lake", "wide, navigable river", "river navigable by small craft", "mouth of a river", "river delta", "confluence of two rivers", "series of natural springs", "well traveled road"],
@@ -17,14 +17,15 @@ const json = {
     // name leaves
     "dated": ["old", "new"],
     "settlement_name": ["endevour", "last legs", "staple"],
-    "city_name": ["york", "rayhill", 'wellwinter'],
-    "empire_name": ["Archaemedies", "Commonwealth", "Elantian"],
+    "city_name": ["york", "rayhill", "cydonia", "wellwinter"],
+    "empire_name": ["Archaemedies", "Elantian", "Jolof", "Khazazar"],
+    "empire_type": ["empire", "dynasty", "republic", "commonwealth", "emirate", "caliphate", "duchy"],
     // construction leaves
     "size": ["small", "medium", "large", "huge", "massive"],
     "state": ["overpopulated", "typical", "bustling", "abandoned", "ruined", "burnt down", "overgrown", "fortified", "garrisoned", "well-manned", "refurbished", "recently restored", "newly built"],
     "defense_structure": ["castle", "keep", "fort", "fortress", "watch tower", "tower", "citadel", "bunker"],
     "surrounded_syn": ["enclosed", "fenced", "hedged", "enveloped", "inundated", "blockaded", "bordered", "surrounded"],
-    "surroundable_defense": ["moat", "curtain wall", "trench", "magical runes", "artillery", "inactive golems"]
+    "surroundable_defense": ["a moat", "a curtain wall", "a trench", "magical runes", "artillery", "inactive golems", "aligned crystals"]
 };
 
 var grammer = tracery.createGrammar(json);
